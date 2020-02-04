@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <title>Calculor</title>
 </head>
+
 <body>
   <div class="header">
     <div class="help">
@@ -15,26 +17,27 @@
   </div>
   <div class="form">
     <!-- size, thick, width, color, profile -->
-    <input type="number" value = "1" placeholder="Size" id="size">
-    <input type="number" value = "2" placeholder="Width" id="width">
-    <input type="number" value = "3" placeholder="Thick" id="thick">
+    <p><label>Half-rounded <input type="checkbox" id="profile"></label></p>
+    <input type="number" value="18" placeholder="Size" id="size">
+    <input type="number" value="4.5" placeholder="Width" id="width">
+    <input type="number" value="1.5" placeholder="Thick" id="thick">
     <select id="color">
       <option selected>Red</option>
       <option>White</option>
       <option>Lemon</option>
     </select>
-    <input type="checkbox" id="profile">
     <button id="calculate" ">Go</button>
+    <input type=" button" id="del" class="del" onclick="deleteResult()" value="Delete" />
   </div>
-  <div class="result">
-    <h3>Result</h3>
+  <div class="result_space">
     <hr>
-    <div class="result-space">
+    <div id="result">
 
     </div>
   </div>
 
-  
+
   <script src="main.js"></script>
 </body>
+
 </html>

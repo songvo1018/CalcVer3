@@ -1,10 +1,10 @@
-function calculate() {  
-  p = {
-    size : parseFloat(document.getElementById('size').value),
-    width : parseFloat(document.getElementById('width').value),
-    thick : parseFloat(document.getElementById('thick').value),
-    color : document.getElementById('color').value,
-    profile : document.getElementById('profile').checked,
+function calculate() {
+  let p = {
+    size: parseFloat(document.getElementById('size').value),
+    width: parseFloat(document.getElementById('width').value),
+    thick: parseFloat(document.getElementById('thick').value),
+    color: document.getElementById('color').value,
+    profile: document.getElementById('profile').checked,
   };
   let sizeCoef = (function (size, thick) {
     if (thick > 1.7) {
@@ -50,11 +50,54 @@ function calculate() {
     color: p.color,
     profile: p.profile
   };
-console.log(res)
 
+  function createRes(obj) {
+    let rs = document.getElementById('result');
+
+    let res = document.createElement('res');
+    res.className = "res";
+    res.setAttribute('id', 'detail-show')
+    res.innerHTML = `${obj.length}, Color: ${obj.color} <br>`;
+
+    let det = document.createElement('det');
+    det.className = "detail";
+    det.setAttribute('id', 'detail-hide')
+    det.innerHTML = `Size: ${obj.size}, Thick: ${obj.thick}, Width: ${obj.width},  Half-rounded: ${obj.profile} <br>`
+    rs.append(res);
+
+    function showDetail() {
+      res.append(det);
+
+      function hideDetail() {
+        det.setAttribute('class', 'hide');
+        console.log('yes')
+      };
+
+      let hide = document.getElementById('detail-hide');
+      if (hide) {
+        document.querySelector('#detail-hide').addEventListener('click', hideDetail);
+      };
+    };
+
+    let show = document.getElementById('detail-show');
+    if (show) {
+      document.querySelector('#detail-show').addEventListener('click', showDetail);
+    }
+
+  }
+  createRes(res);
+  console.log(res)
 }
 let go = document.getElementById('calculate');
 if (go) {
   document.querySelector('#calculate').addEventListener('click', calculate);
 }
 
+function deleteResult() {
+  document.getElementById('result').innerHTML = " ";
+}
+// let res = document.createElement('res');
+// res.className = "result hide";
+// res.innerHTML = ``;
+
+// document.body.append(res);
